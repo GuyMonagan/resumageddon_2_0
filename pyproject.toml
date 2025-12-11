@@ -1,0 +1,53 @@
+[tool.poetry]
+name = "resumageddon"
+version = "0.1.0"
+description = "Интеграция с внешним сервисом в рамках учебного проекта"
+authors = ["GuyMonagan <werevalkury@gmail.com>"]
+readme = "README.md"
+packages = [
+    { include = "resumageddon", from = "src" }
+]
+
+[tool.poetry.dependencies]
+python = ">=3.11"
+requests = "^2.32.5"
+python-dotenv = "^1.2.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^9.0.1"
+coverage = "^7.12.0"
+pytest-cov = "^7.0.0"
+black = "^25.11.0"
+flake8 = "^7.3.0"
+isort = "^7.0.0"
+mypy = "^1.19.0"
+types-requests = "^2.32.4.20250913"
+
+[tool.black]
+line-length = 88
+target-version = ['py311']
+exclude = '''
+/(
+    \.git
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+
+[tool.flake8]
+max-line-length = 88
+exclude = ["venv", ".venv", "__pycache__", "build", "dist"]
+extend-ignore = ["E203", "W503"]
+
+[tool.mypy]
+python_version = "3.11"
+ignore_missing_imports = true
+strict_optional = true
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
